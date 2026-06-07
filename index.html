@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SANGAM Live Test</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            background-color: #eef2f5; 
+            color: #333;
+            padding: 20px; 
+            margin: 0;
+        }
+        .container { 
+            background: white; 
+            max-width: 900px; 
+            margin: 0 auto; 
+            padding: 30px; 
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1); 
+            border-top: 8px solid #1a5276; 
+            border-radius: 8px;
+        }
+        .header { text-align: center; border-bottom: 2px solid #1a5276; padding-bottom: 15px; margin-bottom: 25px; }
+        .header h1 { margin: 0; color: #1a5276; font-size: 26px; }
+        .header h2 { margin: 5px 0 0; color: #555; font-size: 16px; }
+        .instructions { background: #fef9e7; padding: 15px; border-left: 5px solid #f39c12; font-size: 14px; margin-bottom: 25px; border-radius: 4px; }
+        .section-title { background: #1a5276; color: white; padding: 10px 15px; font-size: 16px; font-weight: bold; margin: 30px 0 15px 0; border-radius: 4px; }
+        .question-block { margin-bottom: 20px; padding: 15px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; }
+        .question-text { font-weight: 600; color: #1e293b; margin-bottom: 12px; font-size: 15px; }
+        .options { display: flex; flex-direction: column; gap: 8px; }
+        .option-label { display: flex; align-items: center; padding: 8px 12px; background: white; border: 1px solid #cbd5e1; border-radius: 4px; cursor: pointer; transition: 0.2s; font-size: 14px; }
+        .option-label:hover { background: #f1f5f9; }
+        .option-label input { margin-right: 10px; cursor: pointer; }
+        
+        /* Result Highlights */
+        .correct-answer { background-color: #d4edda !important; border-color: #28a745 !important; color: #155724 !important; font-weight: bold; }
+        .wrong-answer { background-color: #f8d7da !important; border-color: #dc3545 !important; color: #721c24 !important; text-decoration: line-through; }
+        
+        .submit-btn { display: block; width: 100%; padding: 15px; background: #1a5276; color: white; border: none; font-size: 18px; font-weight: bold; border-radius: 6px; cursor: pointer; margin-top: 30px; transition: 0.3s; }
+        .submit-btn:hover { background: #154360; }
+        
+        #result-box { display: none; background: #d4edda; color: #155724; border: 2px solid #28a745; padding: 20px; margin-top: 30px; text-align: center; border-radius: 8px; font-size: 22px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>12th - LIVE EXAM PORTAL</h1>
+        <h3>SWEETEST LOVE, I DO NOT GOE Online Test (50 Questions)</h3>
+<h2 style="font-size:10px; color:#888; font-weight:normal;">
+    यह test sangam (in id-@sangam__zero) द्वारा बनाया गया है। यदि आप भी अपने लिए इसी प्रकार का online test बनवाना चाहते हैं, तो 9241967602 पर Message कर सकते हैं।</h2>
+    </div>
+
+    <div class="instructions">
+        <strong>निर्देश:</strong> सभी प्रश्नों के उत्तर दें। प्रत्येक प्रश्न के 4 विकल्प हैं। परीक्षण पूरा करने के बाद <strong>"Submit Test"</strong> पर क्लिक करें ताकि आप अपना स्कोर और सही उत्तर देख सकें।
+    </div>
+
+    <form id="quizForm">
+        
+        <!-- SECTION 01 -->
+        <div class="section-title">SECTION 01. </div>
+        
+        <script>
+            // All 50 Questions Data (Generated Dynamically for clean code)
+          const questions = [
+                // SECTION - Sweetest Love, I Do Not Goe (Based on John Donne)
+                { q: "1. Donne presents himself in 'Sweetest Love, I Do Not Goe' in-", opt: ["the first person singular number", "the first person plural number", "the third person singular number", "None of these"], ans: 0 },
+                { q: "2. 'Sweetest Love, I Do Not Goe' is-", opt: ["a didactic poem", "an allegorical poem", "a love poem", "None of these"], ans: 2 },
+                { q: "3. Donne is well-known for his-", opt: ["songs and sonnets", "satires", "sermons", "All of these"], ans: 3 },
+                { q: "4. In the poem, 'Sweetest Love, I Do Not Goe' 'dye' stands for-", opt: ["to die", "to paint", "both (A) and (B)", "None of these"], ans: 0 },
+                { q: "5. 'Sweetest Love, I Do Not Goe' may be compared with Shakespeare's-", opt: ["'All the World's Stage'", "'The Marriage of True Minds'", "'Blow Blow Thou Winter Wind'", "None of these"], ans: 1 },
+                { q: "6. Who has composed the poem, 'Sweetest Love, I Do Not Goe'?", opt: ["John Donne", "Andrew Marvell", "George Herbert", "None of these"], ans: 0 },
+                { q: "7. John Donne was the pioneer of –", opt: ["Elizabethan poetry", "Metaphysical poetry", "Restoration poetry", "Neo-classical poetry"], ans: 1 },
+                { q: "8. 'Sweetest Love, I Do Not Goe' is-", opt: ["sonnet", "an ode", "a lyric", "a ballad"], ans: 2 },
+                { q: "9. 'Sweetest Love, I Do Not Goe' has been addressed to-", opt: ["Donne's sister", "Donne's mother", "Donne's friend", "Donne's wife"], ans: 3 },
+                { q: "10. The occasion of the poem, 'Sweetest Love, I Do Not Goe' is Donne's-", opt: ["continental trip", "space tour", "voyage", "None of these"], ans: 0 },
+                { q: "11. John Donne has written the poem –", opt: ["Song of Myself", "An Epitaph", "Sweetest Love I Do Not Goe", "The Soldier"], ans: 2 },
+                { q: "12. The poet in 'Sweetest Love I Do Not Goe' is…………. his beloved.", opt: ["tired of", "angry with", "sad for", "happy for"], ans: 2 },
+                { q: "13. John Donne is going to ………… leaving his wife behind.", opt: ["France", "Germany", "Italy", "England"], ans: 1 },
+                { q: "14. John Donne thinks that ………….. is certain.", opt: ["death", "work", "life", "None of these"], ans: 0 },
+                { q: "15. John Donne wants to go away because he is not tired of his ……………..", opt: ["mother", "father", "beloved", "sister"], ans: 2 },
+                { q: "16. The poet (John Donne) is better than the –", opt: ["moon", "sun", "earth", "sky"], ans: 1 },
+                { q: "17. John Donne feels that a …………. is very hopeless.", opt: ["animal", "goat", "bird", "man"], ans: 3 },
+                { q: "18. ……. has been described as a metaphysical poet.", opt: ["John Keats", "T.S. Eliot", "John Donne", "Walt Whitman"], ans: 1 },
+                { q: "19. ….. wants to gladly accept death.", opt: ["Walt Whitman", "John Keats", "John Donne", "T.S. Eliot"], ans: 2 },
+                { q: "20. John Donne had seen the sun setting ……………. night.", opt: ["today", "yesterday", "tomorrow", "None of these"], ans: 1 }
+            ];
+            // Render Questions
+            questions.forEach((item, index) => {
+                if(index === 10) document.write('<div class="section-title">SECTION 02. </div>');
+                if(index === 20) document.write('<div class="section-title">SECTION 03. </div>');
+                if(index === 30) document.write('<div class="section-title">SECTION 04. </div>');
+                if(index === 40) document.write('<div class="section-title">SECTION 05. </div>');
+
+                let optionsHTML = '';
+                item.opt.forEach((option, i) => {
+                    optionsHTML += `
+                        <label class="option-label" id="label-q${index}-opt${i}">
+                            <input type="radio" name="q${index}" value="${i}">
+                            ${String.fromCharCode(97 + i)}) ${option}
+                        </label>`;
+                });
+
+                document.write(`
+                    <div class="question-block" id="qBlock${index}">
+                        <div class="question-text">${item.q}</div>
+                        <div class="options">${optionsHTML}</div>
+                    </div>
+                `);
+            });
+        </script>
+
+        <button type="button" class="submit-btn" onclick="calculateScore()">Submit Test & Check Result</button>
+    </form>
+
+    <div id="result-box"></div>
+
+</div>
+
+<script>
+    function calculateScore() {
+        let score = 0;
+        let total = questions.length;
+
+        questions.forEach((item, index) => {
+            // Get selected option
+            let selected = document.querySelector(`input[name="q${index}"]:checked`);
+            let correctValue = item.ans;
+            
+            // Highlight correct answer permanently
+            let correctLabel = document.getElementById(`label-q${index}-opt${correctValue}`);
+            correctLabel.classList.add("correct-answer");
+
+            if (selected) {
+                let selectedValue = parseInt(selected.value);
+                if (selectedValue === correctValue) {
+                    score++;
+                } else {
+                    // Highlight wrong answer if user selected it
+                    let wrongLabel = document.getElementById(`label-q${index}-opt${selectedValue}`);
+                    wrongLabel.classList.add("wrong-answer");
+                }
+            }
+        });
+
+        // Show Score
+        let resultBox = document.getElementById('result-box');
+        resultBox.style.display = "block";
+        
+        let percentage = (score / total) * 100;
+        let message = "";
+        
+        if(percentage >= 80) message = "उत्कृष्ट प्रदर्शन! 🌟";
+        else if(percentage >= 50) message = "अच्छा प्रयास, थोड़ी और मेहनत करें! 👍";
+        else message = "आपको और अभ्यास की आवश्यकता है! 📚";
+
+        resultBox.innerHTML = `आपका स्कोर: ${score} / ${total} <br><span style="font-size:18px; color:#333;">${message}</span>`;
+        
+        // Scroll to result
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
